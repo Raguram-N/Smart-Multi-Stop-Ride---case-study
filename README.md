@@ -53,7 +53,7 @@ Rapido Care Partner is a **full-day multi-stop ride and personal care assistant*
 
  - **Prototype -** [Care partner](https://raguram-n.github.io/Smart-Multi-Stop-Ride---case-study/) 
 
- - **Demo video** [Link]()
+ - **Demo video** [Link](https://github.com/Raguram-N/Smart-Multi-Stop-Ride---case-study/blob/main/Demo%20Video.mp4)
 
 ---
 
