@@ -99,95 +99,113 @@ img { width:60px; height:60px; border-radius:50%; margin-right:10px; vertical-al
 <script>
 const startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', ()=>{
-startBtn.style.display='none';
-document.getElementById('step1').style.display='block';
+    startBtn.style.display='none';
+    document.getElementById('step1').style.display='block';
 });
 
 // Helper to add minutes to HH:MM
 function addMinutes(timeStr, mins){
-let [h,m] = timeStr.split(':').map(Number);
-m += mins;
-h += Math.floor(m/60);
-m = m % 60;
-h = h % 24;
-return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+    let [h,m] = timeStr.split(':').map(Number);
+    m += mins;
+    h += Math.floor(m/60);
+    m = m % 60;
+    h = h % 24;
+    return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
 }
 
 // Step 1 → Plan day
 function planFullDay(){
-document.getElementById('step1').style.display='none';
-document.getElementById('hotelStep').style.display='block';
+    document.getElementById('step1').style.display='none';
+    document.getElementById('hotelStep').style.display='block';
 
-// Show hotel review
-const hotelSelect = document.getElementById('hotelSelect');
-const reviewDiv = document.getElementById('hotelReview');
-reviewDiv.innerHTML = `Review: ${hotelSelect.selectedOptions[0].dataset.review} | Stars: ${hotelSelect.selectedOptions[0].dataset.stars}`;
-hotelSelect.addEventListener('change', ()=>{
-reviewDiv.innerHTML = `Review: ${hotelSelect.selectedOptions[0].dataset.review} | Stars: ${hotelSelect.selectedOptions[0].dataset.stars}`;
-});
+    // Show hotel review
+    const hotelSelect = document.getElementById('hotelSelect');
+    const reviewDiv = document.getElementById('hotelReview');
+    reviewDiv.innerHTML = `Review: ${hotelSelect.selectedOptions[0].dataset.review} | Stars: ${hotelSelect.selectedOptions[0].dataset.stars}`;
+    hotelSelect.addEventListener('change', ()=>{
+        reviewDiv.innerHTML = `Review: ${hotelSelect.selectedOptions[0].dataset.review} | Stars: ${hotelSelect.selectedOptions[0].dataset.stars}`;
+    });
 }
 
 // Step 2 → Ask for driver
 function showDriverOption(){
-document.getElementById('hotelStep').style.display='none';
-document.getElementById('driverAsk').style.display='block';
+    document.getElementById('hotelStep').style.display='none';
+    document.getElementById('driverAsk').style.display='block';
 }
 
 // Step 3 → Show driver form
 function showDriverForm(){
-document.getElementById('driverAsk').style.display='none';
-document.getElementById('driverForm').style.display='block';
+    document.getElementById('driverAsk').style.display='none';
+    document.getElementById('driverForm').style.display='block';
 }
 
 // Step 3b → Show day plan if no driver
 function finishPlan(){
-document.getElementById('driverAsk').style.display='none';
-const hotel = document.getElementById('hotelSelect').value;
-const company = document.getElementById('company').value;
-const arrival = document.getElementById('arrival').value;
-const eventTime = document.getElementById('eventTime').value;
-const returnTime = document.getElementById('returnTime').value;
-
-const planText = `
-1️⃣ Arrival at Bus Stand: ${arrival}<br>
-2️⃣ Stay at Hotel: ${hotel}<br>
-3️⃣ Travel to Company/Conference: ${company} (Event: ${eventTime})<br>
-4️⃣ Free time suggestions: Nearby restaurants, mall, park, theater<br>
-5️⃣ Return for departure: ${returnTime}<br>
-🎉 Happy journey! All the best. Wishing you success!
-`;
-document.getElementById('planText').innerHTML = planText;
-document.getElementById('planSummary').style.display='block';
+    document.getElementById('driverAsk').style.display='none';
+    generatePlan();
 }
 
 // Step 4 → Book driver
 function bookDriver(){
-document.getElementById('driverForm').style.display='none';
-const vehicle = document.getElementById('vehicle').value;
-const gender = document.getElementById('driverGender').value;
-const lang = document.getElementById('language').value;
+    document.getElementById('driverForm').style.display='none';
+    generatePlan(true);
+}
 
-// Simulated driver info
-const driver = {
-name:'Sahana R.',
-vehicle:vehicle,
-number:'AB12 XY3456',
-contact:'+91 9876543210',
-photo:'https://randomuser.me/api/portraits/women/44.jpg',
-license:'LIC12345678',
-idProof:'ID987654321'
-};
+function generatePlan(withDriver=false){
+    const hotel = document.getElementById('hotelSelect').value;
+    const company = document.getElementById('company').value;
+    const arrival = document.getElementById('arrival').value;
+    const eventTime = document.getElementById('eventTime').value;
+    const returnTime = document.getElementById('returnTime').value;
 
-const driverInfo = `
+    // Estimate times
+    const hotelDrop = addMinutes(arrival, 30); // 30 mins to hotel
+    const hotelPickup = addMinutes(hotelDrop, 30); // 30 mins stay
+    const companyDrop = eventTime; // user defined
+    const freeTimeStart = addMinutes(companyDrop, 60); // 1 hr event
+    const returnPickup = addMinutes(freeTimeStart, 60); // 1 hr free time before return
+
+    const planText = `
+1️⃣ Pick-up from Bus Stand: ${arrival}<br>
+2️⃣ Drop at Hotel: ${hotel} @ ${hotelDrop}<br>
+3️⃣ Pick-up from Hotel to Company/Conference: ${hotelPickup}<br>
+4️⃣ Arrival at Company/Conference: ${company} @ ${companyDrop}<br>
+5️⃣ Free Time Suggestions: Nearby restaurants, mall, park, theater from ${freeTimeStart}<br>
+6️⃣ Pickup for Return Departure: ${returnPickup} → Bus at ${returnTime}<br>
+${withDriver ? 
+'👨‍✈️Your driver will be assigned for all stops.' : ''}
+We care you
+`;
+
+    document.getElementById('planText').innerHTML = planText;
+    document.getElementById('planSummary').style.display='block';
+
+    if(withDriver){
+        const vehicle = document.getElementById('vehicle').value;
+        const gender = document.getElementById('driverGender').value;
+        const lang = document.getElementById('language').value;
+
+        const driver = {
+            name:'Sahana R.',
+            vehicle:vehicle,
+            number:'AB12 XY3456',
+            contact:'+91 9876543210',
+            photo:'https://randomuser.me/api/portraits/women/44.jpg',
+            license:'LIC12345678',
+            idProof:'ID987654321'
+        };
+
+        const driverInfo = `
 <div class="flex"><img src="${driver.photo}" alt="Driver Photo"> <b>${driver.name}</b></div>
 Vehicle: ${driver.vehicle} | Number: ${driver.number}<br>
 License: ${driver.license} | ID: ${driver.idProof}<br>
 Contact: ${driver.contact}<br>
 Gender: ${gender} | Language: ${lang}<br>
-
 `;
-
-document.getElementById('driverInfo').innerHTML = driverInfo;
-document.getElementById('driverSummary').style.display='block';
+        document.getElementById('driverInfo').innerHTML = driverInfo;
+        document.getElementById('driverSummary').style.display='block';
+    }
 }
 </script>
+
+  
