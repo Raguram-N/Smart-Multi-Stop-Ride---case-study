@@ -142,5 +142,5 @@ Additional revenue from **premium scheduling, multi-stop dynamic pricing, corpor
 
 ---
 
-✍️ **Author:** RAGURAM NARAYANASWAMY  
-📂 **Repo Purpose:** Product Case Study & Growth Proposal for Rapido
+## ✍️ **Author:** RAGURAM NARAYANASWAMY  
+## 📂 **Repo Purpose:** Product Case Study & Growth Proposal for Rapido
