@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapido Care Partner - Full Day & Driver</title>
+<style>
+body { font-family: Arial; background:#f0f2f5; margin:0; padding:0; display:flex; justify-content:center; align-items:flex-start; min-height:100vh; padding-top:50px;}
+.container { background:#fff; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15); width:480px; padding:20px;}
+h1 {text-align:center; color:#ff3b30;}
+button { background:#ff3b30; color:#fff; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; font-size:16px; margin:10px 0; width:100%; }
+button:hover { background:#e03227; }
+.step { display:none; margin-top:20px; }
+label { display:block; margin:10px 0 5px; }
+input, select { width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; }
+.plan-summary, .driver-summary { background:#eafaf1; padding:10px; margin-top:15px; border-radius:6px; }
+img { width:60px; height:60px; border-radius:50%; margin-right:10px; vertical-align:middle; }
+.flex { display:flex; align-items:center; margin:5px 0; }
+.success-msg { font-size:16px; color:#2e7d32; margin-top:15px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Rapido Care Partner</h1>
+<button id="startBtn">Plan My Day</button>
+
+<!-- Step 1: Day Details -->
+<div class="step" id="step1">
+<h3>Enter Your Day Details</h3>
+<label for="arrival">Arrival at Bus Stand (HH:MM, 24h):</label>
+<input type="time" id="arrival" value="05:00">
+<label for="eventTime">Event / Interview Time (HH:MM, 24h):</label>
+<input type="time" id="eventTime" value="10:00">
+<label for="returnTime">Return Bus / Departure Time (HH:MM, 24h):</label>
+<input type="time" id="returnTime" value="22:00">
+<label for="company">Company / Conference Location:</label>
+<input type="text" id="company" placeholder="Company name or address">
+<button onclick="planFullDay()">Generate Day Plan</button>
+</div>
+
+<!-- Step 2: Hotel Selection -->
+<div class="step" id="hotelStep">
+<h3>Select Your Hotel</h3>
+<label for="hotelSelect">Choose hotel:</label>
+<select id="hotelSelect">
+<option data-stars="5" data-review="Excellent stay!">Sunrise Hotel ⭐⭐⭐⭐⭐</option>
+<option data-stars="4" data-review="Very comfortable.">City Inn ⭐⭐⭐⭐</option>
+<option data-stars="3" data-review="Good for budget.">Comfort Stay ⭐⭐⭐</option>
+</select>
+<div id="hotelReview" style="margin:10px 0; font-size:14px; color:#555;"></div>
+<button onclick="showDriverOption()">Next</button>
+</div>
+
+<!-- Step 3: Ask for driver -->
+<div class="step" id="driverAsk">
+<h3>Shall I assign a driver?</h3>
+<button onclick="showDriverForm()">Yes</button>
+<button onclick="finishPlan()">No</button>
+</div>
+
+<!-- Step 4: Driver form -->
+<div class="step" id="driverForm">
+<h3>Driver Preferences</h3>
+<label for="vehicle">Cab / Auto / Bike:</label>
+<select id="vehicle">
+<option>Cab</option>
+<option>Auto</option>
+<option>Bike</option>
+</select>
+<label for="driverGender">Driver Gender:</label>
+<select id="driverGender">
+<option>Male</option>
+<option>Female</option>
+</select>
+<label for="language">Language Preference:</label>
+<select id="language">
+<option>English</option>
+<option>Tamil</option>
+<option>Any</option>
+</select>
+<button onclick="bookDriver()">Book a Care</button>
+</div>
+
+<!-- Step 5: Day Plan Summary -->
+<div class="step" id="planSummary">
+<h3>Your Smart Day Plan</h3>
+<div class="plan-summary" id="planText"></div>
+</div>
+
+<!-- Step 6: Driver Info -->
+<div class="step" id="driverSummary">
+<h3>Your Assigned Care Partner</h3>
+<div class="driver-summary" id="driverInfo"></div>
+<div class="success-msg">🎉 Happy journey! All the best. Wishing you success! 🎉</div>
+</div>
+
+</div>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+startBtn.addEventListener('click', ()=>{
+startBtn.style.display='none';
+document.getElementById('step1').style.display='block';
+});
+
+// Helper to add minutes to HH:MM
+function addMinutes(timeStr, mins){
+let [h,m] = timeStr.split(':').map(Number);
+m += mins;
+h += Math.floor(m/60);
+m = m % 60;
+h = h % 24;
+return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+}
+
+// Step 1 → Plan day
+function planFullDay(){
+document.getElementById('step1').style.display='none';
+document.getElementById('hotelStep').style.display='block';
+
+// Show hotel review
+const hotelSelect = document.getElementById('hotelSelect');
+const reviewDiv = document.getElementById('hotelReview');
+reviewDiv.innerHTML = `Review: ${hotelSelect.selectedOptions[0].dataset.review} | Stars: ${hotelSelect.selectedOptions[0].dataset.stars}`;
+hotelSelect.addEventListener('change', ()=>{
+reviewDiv.innerHTML = `Review: ${hotelSelect.selectedOptions[0].dataset.review} | Stars: ${hotelSelect.selectedOptions[0].dataset.stars}`;
+});
+}
+
+// Step 2 → Ask for driver
+function showDriverOption(){
+document.getElementById('hotelStep').style.display='none';
+document.getElementById('driverAsk').style.display='block';
+}
+
+// Step 3 → Show driver form
+function showDriverForm(){
+document.getElementById('driverAsk').style.display='none';
+document.getElementById('driverForm').style.display='block';
+}
+
+// Step 3b → Show day plan if no driver
+function finishPlan(){
+document.getElementById('driverAsk').style.display='none';
+const hotel = document.getElementById('hotelSelect').value;
+const company = document.getElementById('company').value;
+const arrival = document.getElementById('arrival').value;
+const eventTime = document.getElementById('eventTime').value;
+const returnTime = document.getElementById('returnTime').value;
+
+const planText = `
+1️⃣ Arrival at Bus Stand: ${arrival}<br>
+2️⃣ Stay at Hotel: ${hotel}<br>
+3️⃣ Travel to Company/Conference: ${company} (Event: ${eventTime})<br>
+4️⃣ Free time suggestions: Nearby restaurants, mall, park, theater<br>
+5️⃣ Return for departure: ${returnTime}<br>
+🎉 Happy journey! All the best. Wishing you success!
+`;
+document.getElementById('planText').innerHTML = planText;
+document.getElementById('planSummary').style.display='block';
+}
+
+// Step 4 → Book driver
+function bookDriver(){
+document.getElementById('driverForm').style.display='none';
+const vehicle = document.getElementById('vehicle').value;
+const gender = document.getElementById('driverGender').value;
+const lang = document.getElementById('language').value;
+
+// Simulated driver info
+const driver = {
+name:'Sahana R.',
+vehicle:vehicle,
+number:'AB12 XY3456',
+contact:'+91 9876543210',
+photo:'https://randomuser.me/api/portraits/women/44.jpg',
+license:'LIC12345678',
+idProof:'ID987654321'
+};
+
+const driverInfo = `
+<div class="flex"><img src="${driver.photo}" alt="Driver Photo"> <b>${driver.name}</b></div>
+Vehicle: ${driver.vehicle} | Number: ${driver.number}<br>
+License: ${driver.license} | ID: ${driver.idProof}<br>
+Contact: ${driver.contact}<br>
+Gender: ${gender} | Language: ${lang}<br>
+
+`;
+
+document.getElementById('driverInfo').innerHTML = driverInfo;
+document.getElementById('driverSummary').style.display='block';
+}
+</script>
