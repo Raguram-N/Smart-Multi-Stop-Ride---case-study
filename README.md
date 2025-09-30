@@ -1,3 +1,4 @@
+# Case study 
 # 🛵🚖 Rapido Care Partner  
 ## Smart Multi-Stop Ride & Personal Care Partner  
 
