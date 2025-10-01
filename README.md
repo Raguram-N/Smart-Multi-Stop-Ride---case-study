@@ -75,7 +75,7 @@ Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner*
 6. **Warm Farewell Message**  
 
 - **Prototype Demo:** [Care Partner](https://raguram-n.github.io/Smart-Multi-Stop-Ride---case-study/)  
-- **Demo Video:** [Watch Here](https://github.com/Raguram-N/Smart-Multi-Stop-Ride---case-study/blob/main/Demo%20Video.mp4)  
+- **Demo Video:** [Watch Here](https://github.com/Raguram-N/Smart-Multi-Stop-Ride---case-study/blob/main/Demo%20Video.mp4) - (Click "view raw" to download the video)
 
 ---
 
