@@ -16,19 +16,35 @@ Rapido Care Partner is a **full-day multi-stop ride and personal care assistant*
 ---
 
 ## ✨ The Story – The Spark  
-> One day, a boy received an interview call in a **new city**.  
+
+<table>
+<tr>
+<td width="50%" align="center" valign="middle">
+
+<img src="Care taker.png" width="95%" alt="Just Click - Story Illustration" style="border-radius:10px; box-shadow: 0px 0px 8px rgba(0,0,0,0.2);" />
+
+</td>
+<td width="60%" valign="top">
+
+### Picture this:
+> One day, a girl received an interview call in a **new city**.  
 > Imagine living in **Chennai** but having an interview in **Mumbai** — a city completely unfamiliar.  
 
-He struggled with:  
+She struggled with:  
 - Finding a safe and affordable **hotel**  
 - Booking a **cab** for pick-up and drop  
 - Managing **return travel** back to the bus stand or station  
 - Coordinating timings between interview, travel, and waiting periods  
 
 The entire process felt **hectic and stressful**.  
-For a **woman in the same situation**, the concerns multiply — **safety, trust, and fear of missing the interview or conference**.  
+For a **woman in the situation**, the concerns multiply — **safety, trust, and fear of missing the interview or conference**.  
 
 👉 This is where the idea was born.  
+
+
+</td>
+</tr>
+</table>
 
 Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner** allows users to **plan the entire day in advance**:  
 - Book **hotel, travel, and driver in one go**  
