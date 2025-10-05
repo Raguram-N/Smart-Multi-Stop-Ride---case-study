@@ -82,6 +82,16 @@ Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner*
 
 ---
 
+
+<table>
+<tr>
+<td width="60%" align="center" valign="middle">
+
+<img src="generated-image.png" width="95%" alt="Just Click - Story Illustration" style="border-radius:10px; box-shadow: 0px 0px 8px rgba(0,0,0,0.2);" />
+
+</td>
+<td width="60%" valign="top">
+
 ## 3. Prototype Flow  
 1. **Plan My Day** → Enter arrival, event, and return times  
 2. **Select Company/Conference Location**  
@@ -89,6 +99,10 @@ Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner*
 4. **Assign Driver (Optional)** → Vehicle, gender, language selection  
 5. **View Day Plan & Driver Info** → Full itinerary and trusted driver details  
 6. **Warm Farewell Message**  
+
+</td>
+</tr>
+</table>
 
 - **Prototype Demo:** [Care Partner](https://raguram-n.github.io/Smart-Multi-Stop-Ride---case-study/)  
 - **Demo Video:** [Watch Here](https://github.com/Raguram-N/Smart-Multi-Stop-Ride---case-study/blob/main/Demo%20Video.mp4) - (Click "view raw" to download the video)
