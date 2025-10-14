@@ -2,7 +2,7 @@
 # 🛵🚖 Rapido Care Partner  
 ## Smart Multi-Stop Ride & Personal Care Partner  
 
-**A prototype for full-day itinerary planning and personal driver assignment, designed for new city travelers, corporates, and women-first safety.**
+A prototype for full-day itinerary planning and personal driver assignment, designed for new city travelers, corporates, and women-first safety.
 
 ---
 
