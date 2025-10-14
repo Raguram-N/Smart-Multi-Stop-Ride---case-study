@@ -104,6 +104,7 @@ Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner*
 </tr>
 </table>
 
+- **figma:** [Rapido care partner](https://www.figma.com/make/bk7MVBe9APeP3b2LnGTJmN/Rapido-Care-Partner-Prototype?node-id=0-1&p=f&t=d6iisE3uteGKQmse-0&fullscreen=1)
 - **Prototype Demo:** [Care Partner](https://raguram-n.github.io/Smart-Multi-Stop-Ride---case-study/)  
 - **Demo Video:** [Watch Here](https://github.com/Raguram-N/Smart-Multi-Stop-Ride---case-study/blob/main/Demo%20Video.mp4) - (Click "view raw" to download the video)
 
