@@ -77,8 +77,10 @@ Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner*
 ### Safety & Security  
 - Prioritizes **women-first safety**  
 - Transparent driver info ensures trust and confidence  
-- Personalized farewell message:  
+
+### Emotional connect 
   > 🎉 *Happy journey! All the best. Wishing you success!* 🎉  
+  - Personalized caring and farewell message
 
 ---
 
