@@ -187,7 +187,7 @@ Additional revenue from **premium scheduling, multi-stop dynamic pricing, corpor
 ---
 
 
-## 🚀 12. Tech Scope
+## 🚀 10. Tech Scope
 
 **🤖 AI-Powered Personalization**  
 - Use AI to **recommend optimized routes, hotels, and rest spots** based on past preferences  
@@ -206,7 +206,7 @@ Additional revenue from **premium scheduling, multi-stop dynamic pricing, corpor
 
 ---
 
-## ✨ 13. Feature Enhancement Scope:
+## ✨ 11. Feature Enhancement Scope:
 
 > Building upon the success of **Rapido Care Partner**, the next evolution envisions **Rapido Care Partner - The Companion** — a heartfelt extension designed for **elderly parents and family-oriented travelers**.  
 
@@ -243,7 +243,7 @@ Beyond wedding errands, these features can also serve as a smart travel companio
 
 ---
 
-## 10. Conclusion  
+## 12. Conclusion  
 
 Rapido Care Partner is a user-first innovation that brings together planning, safety, and personalization into one seamless travel experience.
 
