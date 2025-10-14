@@ -39,12 +39,12 @@ She struggled with:
 The entire process felt **hectic and stressful**.  
 For a **woman in the situation**, the concerns multiply — **safety, trust, and fear of missing the interview or conference**.  
 
-👉 This is where the idea was born.  
-
 
 </td>
 </tr>
 </table>
+
+> 👉 This is where the idea was born.  
 
 Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner** allows users to **plan the entire day in advance**:  
 - Book **hotel, travel, and driver in one go**  
@@ -52,6 +52,7 @@ Instead of juggling multiple apps and last-minute stress, **Rapido Care Partner*
 - Ensure **safety, punctuality, and peace of mind**  
 
 ⚡ **Thus, a problem turned into a product:**  
+
 **Rapido Care Partner – One driver, multiple stops, safe and smart travel.**  
 
 ---
