@@ -37,6 +37,7 @@ She struggled with:
 - Coordinating timings between interview, travel, and waiting periods  
 
 The entire process felt **hectic and stressful**.  
+
 For a **woman in the situation**, the concerns multiply — **safety, trust, and fear of missing the interview or conference**.  
 
 
